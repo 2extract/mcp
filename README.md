@@ -140,6 +140,25 @@ Or edit `~/.gemini/settings.json` (or `.gemini/settings.json` in a project):
 }
 ```
 
+### Cline
+
+Open the Cline panel, click **MCP Servers**, then **Configure MCP Servers**, and add to `cline_mcp_settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "2extract": {
+      "type": "streamableHttp",
+      "url": "https://mcp.2extract.com/mcp",
+      "headers": { "Authorization": "Bearer 2xt_your_api_key" },
+      "disabled": false
+    }
+  }
+}
+```
+
+Keep `"type": "streamableHttp"`: without it Cline falls back to the older SSE transport.
+
 ### Other clients
 
 Any client that supports remote MCP servers works. Give it the endpoint URL, the Streamable HTTP transport and the `Authorization` header.

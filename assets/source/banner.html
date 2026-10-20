@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: Geist; src: url(geist-latin.woff2) format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Geist Mono"; src: url(geist-mono-latin.woff2) format("woff2"); font-weight: 100 900; }
+:root {
+  --band: #171717; --band-accent: #d84e93; --navy: #00297d; --sky: #449ede;
+  --brand-light: #b53471; --brand-dark: #833471;
+  --code: #1a1a2e; --code-accent: #ec9bd1;
+  --syntax-text: #abb2bf; --syntax-string: #98c379; --syntax-function: #61afef; --syntax-attr: #d19a66; --syntax-comment: #8a909c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1280px; height: 640px; background: var(--band); }
+body { font-family: Geist, system-ui, sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+.banner { position: relative; isolation: isolate; overflow: hidden; width: 1280px; height: 640px;
+  display: grid; grid-template-columns: 470px 1fr; gap: 56px; align-items: center; padding: 0 64px; }
+.glow { position: absolute; border-radius: 50%; filter: blur(140px); z-index: -1; }
+.g1 { top: -30%; left: -12%; width: 700px; height: 700px; background: rgb(0 41 125 / .55); }
+.g2 { right: -12%; bottom: -45%; width: 640px; height: 640px; background: rgb(68 158 222 / .28); }
+
+.copy { display: flex; flex-direction: column; gap: 28px; }
+.mark { display: flex; align-items: center; gap: 14px; }
+.chip { font-family: "Geist Mono", monospace; font-size: 13px; letter-spacing: .02em; color: var(--band-accent);
+  border: 1px solid var(--band-accent); border-radius: 999px; padding: 4px 11px; }
+h1 { font-size: 52px; line-height: 1.06; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
+p.lead { font-size: 19px; line-height: 1.5; color: rgb(255 255 255 / .7); text-wrap: pretty; }
+.meta { display: flex; flex-direction: column; gap: 10px; }
+.url { font-family: "Geist Mono", monospace; font-size: 16px; color: #fff; }
+.url span { color: var(--band-accent); }
+.clients { font-size: 14px; color: rgb(255 255 255 / .55); }
+
+.window { overflow: hidden; border-radius: 16px; border: 1px solid rgb(255 255 255 / .15); background: var(--code);
+  box-shadow: 0 32px 72px rgba(0,0,0,.45); }
+.bar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid rgb(255 255 255 / .1); }
+.dots { display: flex; gap: 6px; } .dots i { width: 10px; height: 10px; border-radius: 50%; background: rgb(255 255 255 / .15); }
+.bar span { font-family: "Geist Mono", monospace; font-size: 12px; color: rgb(255 255 255 / .55); }
+.term { padding: 22px 24px 24px; font-family: "Geist Mono", monospace; font-size: 13.5px; line-height: 1.75; color: var(--syntax-text); }
+.term p { overflow-wrap: anywhere; }
+.gap { margin-top: 10px; }
+.in { padding-left: 22px; }
+.prompt { color: var(--code-accent); } .user { color: rgb(255 255 255 / .9); } .tool { color: var(--syntax-function); }
+.attr { color: var(--syntax-attr); } .ok { color: var(--syntax-string); } .dim { color: var(--syntax-comment); }
+.cursor { display: inline-block; width: 7px; height: 14px; transform: translateY(2px); background: var(--syntax-text); margin-left: 2px; }
+</style>
+</head>
+<body>
+<div class="banner">
+  <span class="glow g1"></span><span class="glow g2"></span>
+
+  <div class="copy">
+    <div class="mark">
+      <svg viewBox="0 0 126 20" width="164" height="26" aria-label="2extract">
+        <path d="M34.3867 19.8999L41.4946 9.948L34.3867 0H41.4927L48.6018 9.95093L41.4946 19.9031H34.3867V19.8999Z" fill="#b53471"/>
+        <path d="M55.7017 19.8999H48.6016L52.1555 14.925L55.7075 19.897L55.7017 19.8999ZM52.1497 4.97095L48.6016 0H55.7085L52.1575 4.97412L52.1497 4.97095Z" fill="#833471"/>
+        <path d="M0.642 19.707V16.658L8.842 8.53702C9.12554 8.27717 9.37669 7.98405 9.59 7.66402C9.7675 7.39317 9.90744 7.09949 10.006 6.79102C10.0972 6.50414 10.144 6.20503 10.145 5.90402C10.1457 5.59626 10.0716 5.29295 9.92909 5.02016C9.7866 4.74738 9.57998 4.51328 9.327 4.33802C8.73697 3.9079 8.0197 3.68818 7.29 3.71402C6.44666 3.70864 5.61297 3.89355 4.851 4.25502C3.93446 4.73197 3.10131 5.35438 2.384 6.09802L0 3.18702C1.02807 2.18815 2.2262 1.38082 3.538 0.803022C4.76743 0.272228 6.09288 -8.11408e-05 7.432 0.00301869C8.67461 -0.0256482 9.90865 0.215565 11.049 0.710019C12.0156 1.13139 12.8464 1.81265 13.449 2.67802C14.0313 3.55065 14.3312 4.58121 14.308 5.63002C14.3101 6.22663 14.2214 6.82008 14.045 7.39002C13.8573 7.9779 13.5815 8.5339 13.227 9.03902C12.8022 9.63912 12.3195 10.1961 11.786 10.702L6.186 16.107L14.586 16.079V19.71L0.642 19.707ZM24.23 19.984C22.8116 20.0036 21.4123 19.6549 20.169 18.972C18.9908 18.3285 18.0017 17.3876 17.3 16.243C16.594 15.0831 16.229 13.7478 16.247 12.39C16.2284 11.0376 16.5782 9.7057 17.259 8.53702C17.9235 7.40131 18.8746 6.45994 20.017 5.80702C21.1972 5.12756 22.5383 4.7777 23.9 4.79402C25.248 4.76828 26.5753 5.12881 27.725 5.83302C28.8363 6.52885 29.7407 7.50991 30.344 8.67402C30.9995 9.95075 31.3279 11.3701 31.3 12.805V13.914H20.848C21.045 14.3666 21.3221 14.7799 21.666 15.134C22.0151 15.4901 22.4352 15.7688 22.899 15.952C23.3926 16.1485 23.9197 16.2473 24.451 16.243C25.0186 16.2505 25.5826 16.1518 26.114 15.952C26.5916 15.7716 27.026 15.4929 27.389 15.134L30.355 17.767C29.515 18.4936 28.5532 19.0661 27.514 19.458C26.4582 19.8229 25.3469 20.0009 24.23 19.984ZM20.765 10.784H26.891C26.7569 10.3286 26.5252 9.90784 26.212 9.55102C25.9135 9.2156 25.5506 8.94355 25.145 8.75102C24.7293 8.55501 24.2746 8.45553 23.815 8.46002C23.3477 8.45348 22.8844 8.54797 22.457 8.73702C22.0553 8.91828 21.7 9.18841 21.418 9.52702C21.1166 9.89581 20.8944 10.3227 20.765 10.781V10.784Z" fill="#fff"/>
+        <path d="M66.8935 19.9188C65.4684 20.0228 64.0542 19.6041 62.9155 18.7409C62.4487 18.2954 62.0862 17.7522 61.8538 17.1502C61.6215 16.5483 61.5251 15.9024 61.5715 15.2589V8.80085H58.6055V5.05885H61.5715V1.28885L66.0615 0.318848V5.05885H70.1615V8.80085H66.0615V14.3718C66.0363 14.6178 66.0614 14.8662 66.1353 15.1021C66.2093 15.338 66.3304 15.5563 66.4915 15.7439C66.9296 16.0569 67.4669 16.1991 68.0025 16.1439C68.3411 16.1461 68.6793 16.1231 69.0145 16.0749C69.3569 16.0199 69.6951 15.941 70.0265 15.8389V19.4699C69.5192 19.6204 69 19.7271 68.4745 19.7888C67.9508 19.8659 67.4227 19.9093 66.8935 19.9188ZM71.9105 19.7248V5.05885H76.4005V6.52785C76.8549 5.95734 77.4331 5.49774 78.0915 5.18385C78.7691 4.87241 79.5078 4.71627 80.2535 4.72685C80.839 4.69579 81.4224 4.81998 81.9445 5.08685V8.99485C81.6275 8.83977 81.2912 8.72777 80.9445 8.66185C80.5704 8.58747 80.1899 8.55029 79.8085 8.55085C79.1267 8.54577 78.4547 8.71257 77.8545 9.03585C77.2568 9.35661 76.7547 9.83001 76.3995 10.4079V19.7188L71.9105 19.7248ZM88.2925 19.9739C87.3403 19.991 86.3968 19.7909 85.5335 19.3889C84.7699 19.0353 84.1179 18.4792 83.6485 17.7808C83.1911 17.0813 82.9545 16.2605 82.9695 15.4249C82.9411 14.792 83.0721 14.1622 83.3507 13.5933C83.6292 13.0244 84.0462 12.5345 84.5635 12.1688C85.8894 11.329 87.4456 10.9267 89.0125 11.0189C90.1343 11.016 91.2519 11.1557 92.3385 11.4349V10.7139C92.3617 10.4024 92.3095 10.09 92.1865 9.80296C92.0634 9.51593 91.873 9.26276 91.6315 9.06485C91.0109 8.66229 90.2763 8.47241 89.5385 8.52385C88.8874 8.53477 88.2403 8.62784 87.6125 8.80085C86.7561 9.03631 85.9176 9.33273 85.1035 9.68785L83.4955 6.38785C84.6156 5.87981 85.7802 5.47611 86.9745 5.18185C88.0775 4.91631 89.208 4.78205 90.3425 4.78185C92.0466 4.67618 93.7311 5.19325 95.0825 6.23685C95.6532 6.74756 96.1016 7.38025 96.3943 8.08795C96.687 8.79566 96.8166 9.56021 96.7735 10.3249V19.7248H92.3385V18.8379C91.7694 19.2339 91.1366 19.5292 90.4675 19.7108C89.7566 19.8921 89.025 19.9795 88.2915 19.9709L88.2925 19.9739ZM87.2395 15.3449C87.2347 15.5632 87.2888 15.7788 87.3962 15.969C87.5035 16.1593 87.6601 16.3171 87.8495 16.4258C88.3655 16.7116 88.9515 16.8461 89.5405 16.8139C90.0489 16.8171 90.5559 16.7614 91.0515 16.6479C91.5063 16.5426 91.941 16.3639 92.3385 16.1189V14.2339C91.911 14.1226 91.4768 14.0394 91.0385 13.9849C90.588 13.929 90.1344 13.9013 89.6805 13.9019C89.0582 13.868 88.4378 13.9969 87.8805 14.2759C87.6844 14.3756 87.5203 14.5284 87.4068 14.7169C87.2933 14.9053 87.235 15.1219 87.2385 15.3419L87.2395 15.3449ZM106.533 19.9989C105.152 20.0182 103.789 19.6733 102.583 18.9989C101.429 18.3523 100.467 17.41 99.7975 16.2689C99.1091 15.0976 98.7543 13.7603 98.7715 12.4019C98.7494 11.0381 99.1034 9.69468 99.7945 8.51885C100.47 7.38178 101.43 6.44072 102.58 5.78885C103.784 5.10643 105.147 4.7571 106.53 4.77685C107.713 4.77302 108.883 5.01373 109.967 5.48385C111.031 5.93598 111.979 6.62317 112.739 7.49385L109.995 10.3489C109.557 9.82111 109.02 9.38337 108.415 9.05985C107.864 8.78898 107.256 8.65194 106.641 8.65985C106.025 8.65143 105.419 8.81974 104.895 9.14485C104.376 9.46995 103.955 9.92953 103.675 10.4748C103.372 11.0709 103.22 11.7323 103.232 12.4009C103.222 13.0626 103.379 13.7162 103.689 14.3008C103.981 14.8504 104.417 15.3102 104.95 15.6309C105.494 15.9561 106.117 16.124 106.75 16.1159C107.337 16.1213 107.916 15.9884 108.441 15.7279C109.012 15.4285 109.521 15.0241 109.941 14.5359L112.602 17.3078C111.856 18.163 110.928 18.8402 109.886 19.2899C108.831 19.7584 107.688 19.9999 106.533 19.9989ZM122.052 19.9188C120.627 20.0228 119.213 19.6041 118.074 18.7409C117.608 18.2951 117.246 17.7518 117.014 17.1499C116.783 16.5479 116.687 15.9022 116.733 15.2589V8.80085H113.764V5.05885H116.733V1.28885L121.223 0.318848V5.05885H125.323V8.80085H121.223V14.3718C121.198 14.6178 121.223 14.8662 121.297 15.1021C121.371 15.338 121.492 15.5563 121.653 15.7439C122.092 16.0569 122.629 16.1991 123.164 16.1439C123.503 16.1461 123.841 16.1231 124.176 16.0749C124.519 16.0199 124.857 15.9411 125.188 15.8389V19.4699C124.681 19.6204 124.162 19.7271 123.636 19.7888C123.112 19.866 122.583 19.9094 122.052 19.9188Z" fill="#fff"/>
+      </svg>
+      <span class="chip">MCP server</span>
+    </div>
+    <h1>Web data access for AI agents</h1>
+    <p class="lead">Connect one remote MCP server and describe the job. Your agent picks the location, sets the limits and wires the connection into your code.</p>
+    <div class="meta">
+      <p class="url"><span>https://</span>mcp.2extract.com/mcp</p>
+      <p class="clients">Claude Code · Codex · Gemini · Cursor · any MCP client</p>
+    </div>
+  </div>
+
+  <div class="window">
+    <div class="bar"><span class="dots"><i></i><i></i><i></i></span><span>~/projects/price-tracker</span></div>
+    <div class="term">
+      <p><span class="prompt">$ </span>claude mcp add --transport http 2extract https://mcp.2extract.com/mcp <span class="dim">--header "Authorization: Bearer 2xt_••••••••"</span></p>
+      <p class="ok">✓ Added HTTP MCP server 2extract</p>
+      <p class="gap"><span class="prompt">&gt; </span><span class="user">Route scraper.py through Berlin, one IP per session for 30 minutes, capped at 2 GB.</span></p>
+      <p class="gap"><span class="tool">● searchGeoCities</span><span class="attr">  Berlin → DE</span></p>
+      <p><span class="tool">● listProxyPlans</span><span class="attr">  Residential · pay as you go</span></p>
+      <p><span class="tool">● createProxyResource</span><span class="attr">  price_tracker_berlin</span></p>
+      <p><span class="tool">● setProxyLimits</span><span class="attr">  2 GB</span></p>
+      <p class="gap"><span class="tool">● </span><span class="user">Update(scraper.py)</span><span class="dim">  proxies = {"https": os.environ["PROXY_URL"]}</span></p>
+      <p><span class="tool">● </span><span class="user">Bash(python scraper.py)</span></p>
+      <p class="in ok">200 OK · 203.0.113.57 · Berlin, DE</p>
+      <p class="gap"><span class="prompt">&gt; </span><span class="cursor"></span></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.2extract/mcp",
+  "title": "2extract",
+  "description": "Create and manage residential and mobile proxies, geo targeting, limits, traffic and spend.",
+  "version": "1.0.0",
+  "websiteUrl": "https://docs.2extract.com/ai/mcp-server/overview",
+  "repository": {
+    "url": "https://github.com/2extract/mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.2extract.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "2extract API key as a bearer token",
+          "value": "Bearer {api_key}",
+          "isRequired": true,
+          "variables": {
+            "api_key": {
+              "description": "2extract API key (starts with 2xt_). Create one at https://2extract.com/app/api-keys",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

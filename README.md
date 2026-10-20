@@ -31,7 +31,14 @@ claude mcp add --transport http 2extract https://mcp.2extract.com/mcp \
 
 ### Codex CLI
 
-`~/.codex/config.toml` (or `.codex/config.toml` in a trusted project). The key is read from the `EXTRACT_API_KEY` environment variable:
+The key is read from the `EXTRACT_API_KEY` environment variable; Codex adds `Bearer` itself:
+
+```bash
+export EXTRACT_API_KEY=2xt_your_api_key
+codex mcp add 2extract --url https://mcp.2extract.com/mcp --bearer-token-env-var EXTRACT_API_KEY
+```
+
+Or edit `~/.codex/config.toml` (or `.codex/config.toml` in a trusted project):
 
 ```toml
 [mcp_servers.2extract]
@@ -39,13 +46,15 @@ url = "https://mcp.2extract.com/mcp"
 bearer_token_env_var = "EXTRACT_API_KEY"
 ```
 
-```bash
-export EXTRACT_API_KEY=2xt_your_api_key
-```
-
 ### Gemini CLI
 
-`~/.gemini/settings.json` (or `.gemini/settings.json` in a project):
+```bash
+gemini mcp add -s user --transport http \
+  --header "Authorization: Bearer 2xt_your_api_key" \
+  2extract https://mcp.2extract.com/mcp
+```
+
+Or edit `~/.gemini/settings.json` (or `.gemini/settings.json` in a project):
 
 ```json
 {

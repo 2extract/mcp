@@ -141,7 +141,7 @@ Any client that supports remote MCP servers works. Give it the endpoint URL, the
 
 | Tool | What it does | Scope |
 |---|---|---|
-| `getAccountBalance` | Current balance, credit limit and available credit | `balance:read` |
+| `getAccountBalance` | Available funds, whether a new proxy can be created, and the proxy username prefix | `balance:read` |
 | `getAccountTrafficUsage` | Traffic and spend over a period, for the account or one proxy | `stats:read` |
 | `listAccountBalanceHistory` | Deposits and charges over a period | `stats:read` |
 
@@ -174,6 +174,7 @@ Any client that supports remote MCP servers works. Give it the endpoint URL, the
 | `regenerateProxyPassword` | Issue a new password (asks for confirmation) | `proxies:write` |
 | `setProxyLimits` | Cap traffic or spend per day or month | `proxies:write` |
 | `setProxyIpWhitelist` | Restrict which IP addresses can use the proxy | `proxies:write` |
+| `setProxyTargetHosts` | Restrict which domains the proxy can reach (wildcards like `*.example.com`) | `proxies:write` |
 
 Confirmation for destructive tools happens in your client. If the client does not ask, any key with `proxies:write` can run them, so scope keys accordingly.
 

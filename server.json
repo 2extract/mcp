@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.2extract/mcp",
   "title": "2extract",
-  "description": "Web data access for AI agents: location targeting, usage limits, traffic and spend reports.",
-  "version": "1.0.1",
+  "description": "Create and manage residential and mobile proxies: geo targeting, usage limits, spend reports.",
+  "version": "1.0.2",
   "websiteUrl": "https://mcp.2extract.com/",
   "repository": {
     "url": "https://github.com/2extract/mcp",

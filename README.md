@@ -2,6 +2,12 @@
 
 ![2extract MCP server: web data access for AI agents](assets/banner.png)
 
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=2extract&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%222extract-api-key%22%2C%22description%22%3A%222extract%20API%20key%22%2C%22password%22%3Atrue%7D%5D&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.2extract.com%2Fmcp%22%2C%22headers%22%3A%7B%22Authorization%22%3A%22Bearer%20%24%7Binput%3A2extract-api-key%7D%22%7D%7D)
+[![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install_Server-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=2extract&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%222extract-api-key%22%2C%22description%22%3A%222extract%20API%20key%22%2C%22password%22%3Atrue%7D%5D&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.2extract.com%2Fmcp%22%2C%22headers%22%3A%7B%22Authorization%22%3A%22Bearer%20%24%7Binput%3A2extract-api-key%7D%22%7D%7D&quality=insiders)
+[![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=2extract&config=eyJ1cmwiOiJodHRwczovL21jcC4yZXh0cmFjdC5jb20vbWNwIiwiaGVhZGVycyI6eyJBdXRob3JpemF0aW9uIjoiQmVhcmVyIDJ4dF95b3VyX2FwaV9rZXkifX0%3D)
+
+VS Code asks for the API key on install and does not store it in the config. Cursor installs with a placeholder: replace `2xt_your_api_key` in `mcp.json` with your key.
+
 Remote [Model Context Protocol](https://modelcontextprotocol.io) server for [2extract](https://2extract.com). It lets an AI agent create and manage residential and mobile proxies, pick geo targeting down to city, ZIP or carrier, set traffic and spend limits, and report on usage and cost.
 
 This is a hosted server. There is nothing to install or run locally: your MCP client connects to the URL below with your 2extract API key.
@@ -203,6 +209,7 @@ Any client that supports remote MCP servers works. Give it the endpoint URL, the
 | `setProxyLimits` | Cap traffic or spend per day or month | `proxies:write` |
 | `setProxyIpWhitelist` | Restrict which IP addresses can use the proxy | `proxies:write` |
 | `setProxyTargetHosts` | Restrict which domains the proxy can reach (wildcards like `*.example.com`) | `proxies:write` |
+| `buildConnectionString` | Ready-to-use username and connection string with geo, carrier and sticky-session parameters | `proxies:read`, `balance:read` |
 
 Confirmation for destructive tools happens in your client. If the client does not ask, any key with `proxies:write` can run them, so scope keys accordingly.
 
